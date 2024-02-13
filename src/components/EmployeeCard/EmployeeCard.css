@@ -1,0 +1,8 @@
+.employeeCard {
+  border: 1px solid #ccc;
+}
+
+.employeeCard img {
+  width: 100%;
+  height: auto;
+}
