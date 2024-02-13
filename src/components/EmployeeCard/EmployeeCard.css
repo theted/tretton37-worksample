@@ -9,4 +9,5 @@
   height: auto;
   object-fit: cover;
   flex-grow: 1;
+  filter: grayscale(100%);
 }
