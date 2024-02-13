@@ -1,8 +1,12 @@
 .employeeCard {
   border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
 }
 
 .employeeCard img {
   width: 100%;
   height: auto;
+  object-fit: cover;
+  flex-grow: 1;
 }
