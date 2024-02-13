@@ -16,7 +16,7 @@ export const EmployeeCard = ({
 }) => {
   return (
     <div className="employeeCard">
-      <img src={imagePortraitUrl} alt={name} />
+      <img src={imagePortraitUrl || "no-image.jpg"} alt={name} />
       <h2>{name}</h2>
       <p>Office: {office}</p>
 
