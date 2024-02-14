@@ -1,7 +1,7 @@
 import { test, expect } from "vitest";
 import { chromium, Browser, Page } from "playwright";
 
-const URL = "http://localhost:8080";
+const URL = "http://127.0.0.1:8080";
 
 const countEmployees = async (page: Page) => {
   return page.$$eval(".employeeCard", (cards) => cards.length);
