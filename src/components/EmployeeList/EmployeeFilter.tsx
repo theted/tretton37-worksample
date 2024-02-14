@@ -1,4 +1,4 @@
-import { FC, ChangeEvent } from "react";
+import { useState, FC, ChangeEvent } from "react";
 import "./EmployeeFilter.css";
 
 const offices = [
@@ -20,12 +20,17 @@ type EmployeeFilterProps = {
 };
 
 export const EmployeeFilter: FC<EmployeeFilterProps> = ({ setFilter }) => {
+  const [name, setName] = useState("");
+  const [office, setOffice] = useState("All");
+
   const setOfficeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
-    setFilter({ office: event.target.value });
+    setOffice(event.target.value);
+    setFilter({ office: event.target.value, name });
   };
 
   const setNameHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    setFilter({ name: event.target.value });
+    setName(event.target.value);
+    setFilter({ name: event.target.value, office });
   };
 
   return (
