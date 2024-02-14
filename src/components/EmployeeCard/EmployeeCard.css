@@ -11,3 +11,13 @@
   flex-grow: 1;
   filter: grayscale(100%);
 }
+
+.employeeCard .social {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.employeeCard .icon {
+  max-width: 32px;
+}
