@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { getEmployees } from "./api";
 import { EmployeeList } from "./components/EmployeeList/EmployeeList.tsx";
 import { Spinner } from "./components/Spinner/Spinner.tsx";
+import { shuffleArray } from "./helpers.ts";
 
 function App() {
   const [employees, setEmployees] = useState([]);
@@ -10,7 +11,7 @@ function App() {
 
   useEffect(() => {
     getEmployees().then((data) => {
-      setEmployees(data);
+      setEmployees(shuffleArray(data));
       setIsLoading(false);
     });
   }, []);
@@ -19,6 +20,7 @@ function App() {
     <>
       <h1>Tretton37 heroes</h1>
       {isLoading ? <Spinner /> : <EmployeeList employees={employees} />}
+      <div id="bg-mask"></div>
     </>
   );
 }
