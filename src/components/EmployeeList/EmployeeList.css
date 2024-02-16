@@ -1,0 +1,5 @@
+.employeeList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--min-card-width), 1fr));
+  gap: 2em;
+}

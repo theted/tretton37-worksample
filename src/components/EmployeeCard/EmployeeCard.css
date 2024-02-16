@@ -1,15 +1,20 @@
 .employeeCard {
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
+  padding: var(--gap);
+  color: var(--text-color);
+  background-color: var(--main-bg-color);
+  animation: fade-in 600ms;
 }
 
-.employeeCard img {
+.employeeCard > img {
   width: 100%;
   height: auto;
   object-fit: cover;
   flex-grow: 1;
   filter: grayscale(100%);
+  border: 1px solid var(--border-color);
 }
 
 .employeeCard .social {
@@ -19,5 +24,27 @@
 }
 
 .employeeCard .icon {
-  max-width: 32px;
+  width: 24px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .employeeCard .icon {
+    filter: invert(1);
+  }
+}
+
+.employeeInfo {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.stats {
+  flex-grow: 1;
+}
+
+@media screen and (max-width: 480px) {
+  .employeeInfo {
+    flex-direction: column;
+  }
 }
