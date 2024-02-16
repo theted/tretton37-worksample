@@ -1,14 +1,6 @@
 import { useState, FC, ChangeEvent } from "react";
+import { offices } from "../../constants";
 import "./EmployeeFilter.css";
-
-const offices = [
-  "All",
-  "Lund",
-  "Stockholm",
-  "Helsingborg",
-  "Borlänge",
-  "Ljubljana",
-];
 
 type FilterParams = {
   name?: string;
