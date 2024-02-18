@@ -23,42 +23,29 @@ type SocialProps = Pick<
   "name" | "gitHub" | "linkedIn" | "stackOverflow" | "twitter"
 >;
 
-const EmployeeSocial: FC<SocialProps> = ({
-  name,
-  gitHub,
-  twitter,
-  stackOverflow,
-  linkedIn,
-}) => (
+const socialMediaUrls = {
+  gitHub: (userID: string) => `https://github.com/${userID}`,
+  linkedIn: (userID: string) => `https://www.linkedin.com${userID}`,
+  twitter: (userID: string) => `https://twitter.com/${userID}`,
+  stackOverflow: (userID: string) =>
+    `https://stackoverflow.com/users/${userID}`,
+};
+
+const EmployeeSocial: FC<SocialProps> = (props) => (
   <div className="social">
-    {gitHub && (
-      <SocialIcon
-        type="gitHub"
-        href={`https://github.com/${gitHub}`}
-        alt={name}
-      />
-    )}
-    {linkedIn && (
-      <SocialIcon
-        type="linkedIn"
-        href={`https://www.linkedin.com${linkedIn}`}
-        alt={name}
-      />
-    )}
-    {twitter && (
-      <SocialIcon
-        type="twitter"
-        href={`https://twitter.com/${twitter}`}
-        alt={name}
-      />
-    )}
-    {stackOverflow && (
-      <SocialIcon
-        type="stackOverflow"
-        href={`https://stackoverflow.com/users/${stackOverflow}`}
-        alt={name}
-      />
-    )}
+    {Object.entries(socialMediaUrls).map(([type, urlBuilder]) => {
+      const userID = props[type as keyof SocialProps];
+      return (
+        userID && (
+          <SocialIcon
+            key={type}
+            type={type as "gitHub" | "linkedIn" | "stackOverflow" | "twitter"}
+            href={urlBuilder(userID)}
+            alt={props.name}
+          />
+        )
+      );
+    })}
   </div>
 );
 
