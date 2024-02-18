@@ -1,11 +1,7 @@
 import { useState, FC, ChangeEvent } from "react";
 import { offices } from "../../constants";
+import { FilterParams } from "../../types/types";
 import "./EmployeeFilter.css";
-
-type FilterParams = {
-  name?: string;
-  office?: string;
-};
 
 type EmployeeFilterProps = {
   setFilter: (filterParams: FilterParams) => void;

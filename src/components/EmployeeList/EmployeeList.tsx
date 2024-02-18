@@ -2,29 +2,27 @@ import { useState, FC } from "react";
 import { EmployeeCard } from "../EmployeeCard/EmployeeCard";
 import { Employee } from "../../types/Employee";
 import { EmployeeFilter } from "../EmployeeFilter/EmployeeFilter";
+import { FilterParams } from "../../types/types";
 import "./EmployeeList.css";
-
-type FilterParams = {
-  name?: string;
-  office?: string;
-};
 
 type EmployeeFilterProps = {
   employees: Employee[];
   filterParams: FilterParams;
 };
 
+const nameMatches = (employeeName: string, name: string) =>
+  employeeName.toLowerCase().includes(name.toLowerCase());
+
+const officeMatches = (employeeOffice: string, office: string) =>
+  office === "All" || employeeOffice === office;
+
 const filterEmployees = ({ employees, filterParams }: EmployeeFilterProps) => {
   const { name, office } = filterParams;
-  return employees.filter((employee) => {
-    const isNameMatch = name
-      ? employee.name.toLowerCase().includes(name.toLowerCase())
-      : true;
-    const isOfficeMatch =
-      office && office !== "All" ? employee.office === office : true;
 
-    return isNameMatch && isOfficeMatch;
-  });
+  return employees.filter(
+    (employee) =>
+      nameMatches(employee.name, name) && officeMatches(employee.office, office)
+  );
 };
 
 type EmployeeListProps = {
