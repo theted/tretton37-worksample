@@ -16,11 +16,11 @@ select {
 
 :root {
   --main-bg-color: #333;
+  --main-bg-color: rgba(0, 0, 0, 0.2);
   --text-color: #f6f6f6;
   --border-color: #111;
   --min-card-width: 300px;
   --gap: 1em;
-  --max-width: 1800px;
   color-scheme: light dark;
 }
 
@@ -40,8 +40,13 @@ body {
 
 #root {
   padding: 2rem;
-  max-width: var(--max-width);
   margin: 0px auto;
+}
+
+@media screen and (min-width: 780px) {
+  #root {
+    padding: 3rem 5rem;
+  }
 }
 
 #bg-mask {
@@ -50,20 +55,17 @@ body {
   left: 0px;
   right: 0px;
   top: 0px;
-
+  z-index: -1;
   background-image: linear-gradient(
     to right,
     rgba(54, 180, 159, 0.3),
     rgba(219, 255, 117, 0.3)
   );
-
   mask-image: radial-gradient(
     farthest-side at 50% 0%,
     rgb(255, 255, 255),
     rgba(0, 0, 0, 0)
   );
-
-  z-index: -1;
 }
 
 @keyframes fade-in {
@@ -77,13 +79,47 @@ body {
 
 @media (prefers-color-scheme: light) {
   :root {
-    --main-bg-color: #f3f3f3;
+    --main-bg-color: linear-gradient(#f9f9f9, #e6e6e6);
     --text-color: #333;
     --border-color: #d3d3d3;
+  }
+
+  .employeeCard {
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.15));
+  }
+
+  h1 {
+    color: var(--text-color);
+  }
+
+  body {
+    background-image: radial-gradient(
+      circle 592px at 48.2% 50%,
+      rgba(255, 255, 249, 0.455) 0%,
+      rgb(163, 168, 174) 222.6%
+    );
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .spinner {
+    filter: invert(1);
   }
 }
 
 h1 {
   font-family: "Permanent Marker", cursive;
   font-size: 3rem;
+  animation: fade-in 800ms;
+}
+
+h2 {
+  font-weight: 300;
+  font-size: 1.4rem;
+}
+
+@media screen and (max-width: 500px) {
+  h1 {
+    font-size: 2rem !important;
+  }
 }

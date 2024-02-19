@@ -4,8 +4,9 @@
   flex-direction: column;
   padding: var(--gap);
   color: var(--text-color);
-  background-color: var(--main-bg-color);
+  background: var(--main-bg-color);
   animation: fade-in 600ms;
+  transition: background-color 300ms;
 }
 
 .employeeCard > img {
@@ -30,6 +31,9 @@
 @media (prefers-color-scheme: dark) {
   .employeeCard .icon {
     filter: invert(1);
+  }
+  .employeeCard:hover {
+    background: rgba(0, 0, 0, 0.4);
   }
 }
 
