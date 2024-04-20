@@ -40,8 +40,8 @@ export const EmployeeList: FC<EmployeeListProps> = ({ employees }) => {
     <>
       <EmployeeFilter setFilter={applyFilter} />
       <div className="employeeList">
-        {filteredEmployees.map((employee, id) => (
-          <EmployeeCard employee={employee} key={id} />
+        {filteredEmployees.map((employee) => (
+          <EmployeeCard employee={employee} key={employee.email} />
         ))}
       </div>
     </>
